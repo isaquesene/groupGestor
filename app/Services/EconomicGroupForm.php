@@ -11,7 +11,7 @@ final class EconomicGroupForm
         return [
             //->icon('heroicon-m-wrench')
             Forms\Components\TextInput::make('nome')
-                ->label('Nom do Grupo')
+                ->label('Nome do Grupo')
                 ->placeholder('Digite aqui...')
                 ->required()
                 ->maxLength(255),

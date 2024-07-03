@@ -14,6 +14,7 @@ use Filament\Forms;
 use Livewire\Component;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Panel;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
 
 class EconomicGrouplw extends Component implements HasTable, HasForms
 {
@@ -47,7 +48,8 @@ class EconomicGrouplw extends Component implements HasTable, HasForms
             ])
             ->actions([
                 ActionGroup::make([
-                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\ViewAction::make()
+                        ->form(EconomicGroupForm::schema()),
                     Tables\Actions\EditAction::make()
                         //->slideOver()
                         ->form(EconomicGroupForm::schema()),
@@ -55,6 +57,10 @@ class EconomicGrouplw extends Component implements HasTable, HasForms
                 ])
                 ->button()
                 ->label('Ações')
+            ])
+            ->bulkActions([
+                ExportBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
