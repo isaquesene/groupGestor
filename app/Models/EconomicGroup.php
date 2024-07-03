@@ -9,6 +9,8 @@ class EconomicGroup extends Model
 {
     use HasFactory;
 
+    protected $table = 'economic_groups';
+
     protected $fillable = [
         'nome'
     ];
