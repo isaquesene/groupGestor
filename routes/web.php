@@ -10,4 +10,8 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', EconomicGrouplw::class);
+//Route::get('/', EconomicGrouplw::class);
+
+Route::get('/', function () {
+    return redirect('/admin');
+});
