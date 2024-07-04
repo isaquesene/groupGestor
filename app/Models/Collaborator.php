@@ -19,8 +19,7 @@ class Collaborator extends Model
         'nome',
         'email',
         'cpf',
-        'unit_id',
-        'created_at'
+        'unit_id'
     ];
 
     public function unit()
