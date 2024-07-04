@@ -13,4 +13,6 @@ class FlagPage extends Page
     protected static ?string $navigationLabel = 'Bandeira';
 
     protected ?string $heading = 'Bandeira';
+
+    protected static ?string $navigationGroup = 'Funcionalidades';
 }

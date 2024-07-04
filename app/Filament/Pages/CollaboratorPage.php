@@ -13,4 +13,6 @@ class CollaboratorPage extends Page
     protected static ?string $navigationLabel = 'Colaborador';
 
     protected ?string $heading = 'Gerenciar Colaboradores';
+
+    protected static ?string $navigationGroup = 'Funcionalidades';
 }

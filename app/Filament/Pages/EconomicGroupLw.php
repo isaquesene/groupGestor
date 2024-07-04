@@ -13,4 +13,6 @@ class EconomicGroupLw extends Page
     protected static ?string $navigationLabel = 'Grupo Econômico';
 
     protected ?string $heading = 'Grupo Econômico';
+
+    protected static ?string $navigationGroup = 'Funcionalidades';
 }

@@ -13,4 +13,6 @@ class UnitPage extends Page
     protected static ?string $navigationLabel = 'Unidade';
 
     protected ?string $heading = 'Unidade';
+
+    protected static ?string $navigationGroup = 'Funcionalidades';
 }
