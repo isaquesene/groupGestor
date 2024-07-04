@@ -15,11 +15,25 @@ use Filament\Forms;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Panel;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use Filament\Notifications\Notification;
 
 class Unitlw extends Component implements HasTable, HasForms
 {
-
     use InteractsWithTable, InteractsWithForms;
+
+    protected function notify($message, $type = 'success')
+    {
+        $notification = Notification::make()
+            ->title($message);
+
+        if ($type === 'success') {
+            $notification->success();
+        } else if ($type === 'error') {
+            $notification->danger();
+        }
+
+        $notification->send();
+    }
 
     public function render()
     {
@@ -63,8 +77,11 @@ class Unitlw extends Component implements HasTable, HasForms
                     Tables\Actions\ViewAction::make()
                         ->form(UnitForm::schema()),
                     Tables\Actions\EditAction::make()
-                        //->slideOver()
-                        ->form(UnitForm::schema()),
+                        ->form(UnitForm::schema())
+                        ->action(function ($record, $data) {
+                            $record->update($data);
+                            $this->notify('Unidade atualizada com sucesso.');
+                        }),
                     Tables\Actions\DeleteAction::make(),
                 ])
                 ->button()
@@ -76,10 +93,13 @@ class Unitlw extends Component implements HasTable, HasForms
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                ->label('Criar Unidade')
-                //->slideOver()
-                ->model(Unit::class)
-                ->form(UnitForm::schema())
-            ]);
-    }
+                    ->label('Criar Unidade')
+                    ->model(Unit::class)
+                    ->form(UnitForm::schema())
+                    ->action(function ($data) {
+                        Unit::create($data);
+                        $this->notify('Unidade criada com sucesso.');
+                    })
+           ]);
+   }
 }

@@ -13,13 +13,26 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Forms;
 use Filament\Tables\Actions\ActionGroup;
-use Filament\Panel;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use Filament\Notifications\Notification;
 
 class Userslw extends Component implements HasTable, HasForms
 {
-
     use InteractsWithTable, InteractsWithForms;
+
+    protected function notify($message, $type = 'success')
+    {
+        $notification = Notification::make()
+            ->title($message);
+
+        if ($type === 'success') {
+            $notification->success();
+        } else if ($type === 'error') {
+            $notification->danger();
+        }
+
+        $notification->send();
+    }
 
     public function render()
     {
@@ -57,8 +70,11 @@ class Userslw extends Component implements HasTable, HasForms
                     Tables\Actions\ViewAction::make()
                         ->form(UserForm::schema()),
                     Tables\Actions\EditAction::make()
-                        //->slideOver()
-                        ->form(UserForm::schema()),
+                        ->form(UserForm::schema())
+                        ->action(function ($record, $data) {
+                            $record->update($data);
+                            $this->notify('Usuário atualizado com sucesso.');
+                        }),
                     Tables\Actions\DeleteAction::make(),
                 ])
                 ->button()
@@ -70,10 +86,13 @@ class Userslw extends Component implements HasTable, HasForms
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                ->label('Criar Usuário')
-                //->slideOver()
-                ->model(User::class)
-                ->form(UserForm::schema())
+                    ->label('Criar Usuário')
+                    ->model(User::class)
+                    ->form(UserForm::schema())
+                    ->action(function ($data) {
+                        User::create($data);
+                        $this->notify('Usuário criado com sucesso.');
+                    })
             ]);
     }
 }

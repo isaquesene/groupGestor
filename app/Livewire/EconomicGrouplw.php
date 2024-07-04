@@ -15,11 +15,25 @@ use Livewire\Component;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Panel;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use Filament\Notifications\Notification;
 
 class EconomicGrouplw extends Component implements HasTable, HasForms
 {
-
     use InteractsWithTable, InteractsWithForms;
+
+    protected function notify($message, $type = 'success')
+    {
+        $notification = Notification::make()
+            ->title($message);
+
+        if ($type === 'success') {
+            $notification->success();
+        } else if ($type === 'error') {
+            $notification->danger();
+        }
+
+        $notification->send();
+    }
 
     public function render()
     {
@@ -51,8 +65,11 @@ class EconomicGrouplw extends Component implements HasTable, HasForms
                     Tables\Actions\ViewAction::make()
                         ->form(EconomicGroupForm::schema()),
                     Tables\Actions\EditAction::make()
-                        //->slideOver()
-                        ->form(EconomicGroupForm::schema()),
+                        ->form(EconomicGroupForm::schema())
+                        ->action(function ($record, $data) {
+                            $record->update($data);
+                            $this->notify('Grupo Econômico atualizado com sucesso.');
+                        }),
                     Tables\Actions\DeleteAction::make(),
                 ])
                 ->button()
@@ -64,10 +81,13 @@ class EconomicGrouplw extends Component implements HasTable, HasForms
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                ->label('Criar grupo')
-                //->slideOver()
-                ->model(EconomicGroup::class)
-                ->form(EconomicGroupForm::schema())
+                    ->label('Criar grupo')
+                    ->model(EconomicGroup::class)
+                    ->form(EconomicGroupForm::schema())
+                    ->action(function ($data) {
+                        EconomicGroup::create($data);
+                        $this->notify('Grupo Econômico criado com sucesso.');
+                    })
             ]);
     }
 }

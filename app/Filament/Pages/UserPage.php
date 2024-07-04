@@ -14,5 +14,5 @@ class UserPage extends Page
 
     protected ?string $heading = 'Gerenciar Usuários';
 
-    protected static ?string $navigationGroup = 'Funcionalidades';
+    protected static ?string $navigationGroup = 'Sistema';
 }

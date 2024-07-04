@@ -15,11 +15,25 @@ use Filament\Forms;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Panel;
 use pxlrbt\FilamentExcel\Actions\Tables\ExportBulkAction;
+use Filament\Notifications\Notification;
 
 class Collaboratorlw extends Component implements HasTable, HasForms
 {
-
     use InteractsWithTable, InteractsWithForms;
+
+    protected function notify($message, $type = 'success')
+    {
+        $notification = Notification::make()
+            ->title($message);
+
+        if ($type === 'success') {
+            $notification->success();
+        } else if ($type === 'error') {
+            $notification->danger();
+        }
+
+        $notification->send();
+    }
 
     public function render()
     {
@@ -63,8 +77,11 @@ class Collaboratorlw extends Component implements HasTable, HasForms
                     Tables\Actions\ViewAction::make()
                         ->form(CollaboratorForm::schema()),
                     Tables\Actions\EditAction::make()
-                        //->slideOver()
-                        ->form(CollaboratorForm::schema()),
+                        ->form(CollaboratorForm::schema())
+                        ->action(function ($record, $data) {
+                            $record->update($data);
+                            $this->notify('Colaborador atualizado com sucesso.');
+                        }),
                     Tables\Actions\DeleteAction::make(),
                 ])
                 ->button()
@@ -76,10 +93,13 @@ class Collaboratorlw extends Component implements HasTable, HasForms
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                ->label('Criar Colaborador')
-                //->slideOver()
-                ->model(Collaborator::class)
-                ->form(CollaboratorForm::schema())
+                    ->label('Criar Colaborador')
+                    ->model(Collaborator::class)
+                    ->form(CollaboratorForm::schema())
+                    ->action(function ($data) {
+                        Collaborator::create($data);
+                        $this->notify('Colaborador criado com sucesso.');
+                    })
             ]);
     }
 }

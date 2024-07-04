@@ -68,6 +68,7 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationGroup('Auditorias')
                     ->navigationIcon('heroicon-o-shield-exclamation')
                     ->navigationCountBadge(true),
-            ]);
+            ])
+            ->databaseNotifications();
     }
 }
