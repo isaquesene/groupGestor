@@ -75,7 +75,53 @@ Após instalar o Docker va em Resources > WSL e habilite para poder usar.
 
 No Windows vá em iniciar e procure pelo terminal do WSL:
 
+![wsl_windows_04](https://github.com/isaquesene/groupGestor/assets/109972304/9685b921-66f2-4955-8ee0-2e5c053a3dd5)
 
+Abrir o Arquivo docker-compose.yml, Certifiquese se as credênciais do banco.
+Configuração docker-compose.yml:
+
+```bash
+ mysql:
+        image: 'mysql/mysql-server:8.0'
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: 'password'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: 'groupgestor'
+            MYSQL_USER: 'sail'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+```
+
+Certifique-se de que as configurações do .nev correspondem ao que foi definido no docker-compose.yml.
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=groupgestor
+DB_USERNAME=root
+DB_PASSWORD=newpassword
+```
+
+No terminal do Ubuntu WSL, navegue até o diretório do seu projeto e execute:
+
+```bash
+cd /mnt/c/Users/DELL/Documents/teste\ Voch\ Tech/groupGestor
+```
+
+Suba os contêineres:
+
+```bash
+./vendor/bin/sail up -d
+```
+
+Executar as Migrações:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
 
 ## Instalar o Xampp
 
