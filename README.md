@@ -60,6 +60,21 @@ Link para baixar o Docker:
 
 https://docs.docker.com/desktop/install/windows-install/
 
+![docker-app-search](https://github.com/isaquesene/groupGestor/assets/109972304/c4a5dc91-9cdd-4c48-8861-d1bf4d70af06)
+
+## Configurar o Docker
+
+Apos a instalação do Docker será preciso instalar o WSL, um serviço linux para sunbir arquivos .sh e facilitar a configuração do ambiente.
+Passos para configurar e subir a aplicação no ambiente Docker usando o WSL do Linux:
+
+Após instalar o Docker va em 
+
+## Instalar o Xampp
+
+Link para baixar o Xampp:
+
+https://www.apachefriends.org/pt_br/index.html
+
 ```bash
 php artisan migrate
 ```
