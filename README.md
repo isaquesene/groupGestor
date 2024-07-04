@@ -1,66 +1,428 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Group Gestor - Sistema de gestão para grupos econômicos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<div class="filament-hidden">
 
-## About Laravel
+![Screenshot of Application Feature]([https://raw.githubusercontent.com/rmsramos/activitylog/main/arts/cover.jpeg](https://www.canva.com/design/DAGKBuevGq8/nEuZIAXrCVJZFPrzCwLCTQ/view?utm_content=DAGKBuevGq8&utm_campaign=designshare&utm_medium=link&utm_source=editor))
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This package provides a Filament resource that shows you all of the activity logs and detailed view of each log created using the `spatie/laravel-activitylog` package. It also provides a relationship manager for related models.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requirements
 
-## Learning Laravel
+-   Laravel v11
+-   Filament v3
+-   Spatie/Laravel-activitylog v4
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Languages Supported
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+ActivityLog Plugin is translated for :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   🇧🇷 Brazilian Portuguese
+-   🇺🇸 English
+-   🇪🇸 Spanish
+-   🇫🇷 French
 
-## Laravel Sponsors
+## Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+You can install the package via composer:
 
-### Premium Partners
+```bash
+composer require rmsramos/activitylog
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+After that run the install command:
+
+```bash
+php artisan activitylog:install
+```
+
+This will publish the config & migrations from `spatie/laravel-activitylog`
+
+And run migrates
+
+```bash
+php artisan migrate
+```
+
+You can manually publish the configuration file with:
+
+```bash
+php artisan vendor:publish --tag="activitylog-config"
+```
+
+This is the contents of the published config file:
+
+```php
+return [
+    'resources' => [
+        'label'                     => 'Activity Log',
+        'plural_label'              => 'Activity Logs',
+        'navigation_group'          => null,
+        'navigation_icon'           => 'heroicon-o-shield-check',
+        'navigation_sort'           => null,
+        'navigation_count_badge'    => false,
+        'resource'                  => \Rmsramos\Activitylog\Resources\ActivitylogResource::class,
+    ],
+    'datetime_format' => 'd/m/Y H:i:s',
+];
+```
+
+Optionally, you can publish the views using
+
+```bash
+php artisan vendor:publish --tag="activitylog-views"
+```
+
+## Usage
+
+### Basic Spatie ActivityLog usage
+
+In you `Model` add `Spatie\Activitylog\Traits\LogsActivity` trait, and configure `getActivitylogOption` function
+
+For more configuration, Please review [Spatie Docs](https://spatie.be/docs/laravel-activitylog/v4)
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
+
+class NewsItem extends Model
+{
+    use LogsActivity;
+
+    protected $fillable = ['name', 'text'];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+        ->logOnly(['name', 'text']);
+    }
+}
+```
+
+## Plugin usage
+
+![Screenshot of Application Feature](https://raw.githubusercontent.com/rmsramos/activitylog/main/arts/resource.png)
+
+In your Panel ServiceProvider `(App\Providers\Filament)` active the plugin
+
+Add the `Rmsramos\Activitylog\ActivitylogPlugin` to your panel config
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make(),
+        ]);
+}
+```
+
+## Customising the ActivitylogResource
+
+You can swap out the `ActivitylogResource` used by updating the `->resource()` value. Use this to create your own `CustomResource` class and extend the original at `\Rmsramos\Activitylog\Resources\ActivitylogResource::class`. This will allow you to customise everything such as the views, table, form and permissions.
+
+> [!NOTE]
+> If you wish to change the resource on List and View page be sure to replace the `getPages` method on the new resource and create your own version of the `ListPage` and `ViewPage` classes to reference the custom `CustomResource`.
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->resource(\Path\For\Your\CustomResource::class),
+        ]);
+}
+```
+
+## Customising label Resource
+
+You can swap out the `Resource label` used by updating the `->label()` and `->pluralLabel()` value.
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->label('Log')
+                ->pluralLabel('Logs'),
+        ]);
+}
+```
+
+## Grouping resource navigation items
+
+You can add a `Resource navigation group` updating the `->navigationGroup()` value.
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->navigationGroup('Activity Log'),
+        ]);
+}
+```
+
+## Customising a resource navigation icon
+
+You can swap out the `Resource navigation icon` used by updating the `->navigationIcon()` value.
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->navigationIcon('heroicon-o-shield-check'),
+        ]);
+}
+```
+
+## Active a count badge
+
+You can active `Count Badge` updating the `->navigationCountBadge()` value.
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->navigationCountBadge(true),
+        ]);
+}
+```
+
+## Set navigation sort
+
+You can set the `Resource navigation sort` used by updating the `->navigationSort()` value.
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->navigationSort(3),
+        ]);
+}
+```
+
+## Authorization
+
+If you would like to prevent certain users from accessing the logs resource, you should add a authorize callback in the `ActivitylogPlugin` chain.
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->authorize(
+                    fn () => auth()->user()->id === 1
+                ),
+        ]);
+}
+```
+
+### Role Policy
+
+To ensure ActivitylogResource access via RolePolicy you would need to add the following to your AppServiceProvider:
+
+```php
+use App\Policies\ActivityPolicy;
+use Illuminate\Support\Facades\Gate;
+use Spatie\Activitylog\Models\Activity;
+
+class AppServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        Gate::policy(Activity::class, ActivityPolicy::class);
+    }
+}
+```
+
+## Full configuration
+
+```php
+use Rmsramos\Activitylog\ActivitylogPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        ->plugins([
+            ActivitylogPlugin::make()
+                ->resource(\Path\For\Your\CustomResource::class)
+                ->label('Log')
+                ->pluralLabel('Logs')
+                ->navigationGroup('Activity Log')
+                ->navigationIcon('heroicon-o-shield-check')
+                ->navigationCountBadge(true)
+                ->navigationSort(2)
+                ->authorize(
+                    fn () => auth()->user()->id === 1
+                ),
+        ]);
+}
+```
+
+## Relationship manager
+
+If you have a model that uses the `Spatie\Activitylog\Traits\LogsActivity` trait, you can add the `Rmsramos\Activitylog\RelationManagers\ActivitylogRelationManager` relationship manager to your Filament resource to display all of the activity logs that are performed on your model.
+![Screenshot of Application Feature](https://raw.githubusercontent.com/rmsramos/activitylog/main/arts/relationManager.png)
+
+```php
+use Rmsramos\Activitylog\RelationManagers\ActivitylogRelationManager;
+
+public static function getRelations(): array
+{
+    return [
+        ActivitylogRelationManager::class,
+    ];
+}
+```
+
+## Timeline Action
+
+![Screenshot of Application Feature](https://raw.githubusercontent.com/rmsramos/activitylog/main/arts/timeline.png)
+
+To make viewing activity logs easier, you can use a custom action. In your UserResource in the table function, add the `ActivityLogTimelineAction`.
+
+```php
+use Rmsramos\Activitylog\Actions\ActivityLogTimelineAction;
+
+public static function table(Table $table): Table
+{
+    return $table
+        ->actions([
+            ActivityLogTimelineAction::make('Activities'),
+        ]);
+}
+```
+
+you can pass a matrix with the relationships, remember to configure your `Models`.
+
+```php
+public static function table(Table $table): Table
+{
+    return $table
+        ->actions([
+            ActivityLogTimelineAction::make('Activities')
+                ->withRelations(['profile', 'address']), //opcional
+        ]);
+}
+```
+
+You can configure the icons and colors, by default the `'heroicon-m-check'` icon and the `'primary'` color are used.
+
+```php
+use Rmsramos\Activitylog\Actions\ActivityLogTimelineAction;
+
+public static function table(Table $table): Table
+{
+    return $table
+        ->actions([
+            ActivityLogTimelineAction::make('Activities')
+                ->timelineIcons([
+                    'created' => 'heroicon-m-check-badge',
+                    'updated' => 'heroicon-m-pencil-square',
+                ])
+                ->timelineIconColors([
+                    'created' => 'info',
+                    'updated' => 'warning',
+                ])
+        ]);
+}
+```
+
+You can limit the number of results in the query by passing a limit, by default the last 10 records are returned.
+
+```php
+use Rmsramos\Activitylog\Actions\ActivityLogTimelineAction;
+
+public static function table(Table $table): Table
+{
+    return $table
+        ->actions([
+            ActivityLogTimelineAction::make('Activities')
+                ->limit(30),
+        ]);
+}
+```
+
+## Full Timeline configuration
+
+```php
+use Rmsramos\Activitylog\Actions\ActivityLogTimelineAction;
+
+public static function table(Table $table): Table
+{
+    return $table
+        ->actions([
+            ActivityLogTimelineAction::make('Activities')
+                ->withRelations(['profile', 'address'])
+                ->timelineIcons([
+                    'created' => 'heroicon-m-check-badge',
+                    'updated' => 'heroicon-m-pencil-square',
+                ])
+                ->timelineIconColors([
+                    'created' => 'info',
+                    'updated' => 'warning',
+                ])
+                ->limit(10),
+        ]);
+}
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+
+## Acknowledgements
+
+Special acknowledgment goes to these remarkable tools and people (developers), the Activity Log plugin only exists due to the inspiration and at some point the use of these people's codes.
+
+-   [Jay-Are Ocero](https://github.com/199ocero/activity-timeline)
+-   [Alex Justesen](https://github.com/alexjustesen)
+-   [z3d0x](https://github.com/z3d0x/filament-logger)
+-   [Filament](https://github.com/filamentphp/filament)
+-   [Spatie Activitylog Contributors](https://github.com/spatie/laravel-activitylog#credits)
+
+## Credits
+
+-   [Rômulo Ramos](https://github.com/rmsramos)
+-   [All Contributors](../../contributors)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
