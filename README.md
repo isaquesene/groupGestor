@@ -8,38 +8,57 @@
 
 This package provides a Filament resource that shows you all of the activity logs and detailed view of each log created using the `spatie/laravel-activitylog` package. It also provides a relationship manager for related models.
 
-## Requirements
+## Configurações
 
 -   Laravel v11
 -   Filament v3
+-   Livewire 3
+-   Vue.js
+-   Tailwind
+-   Docker Composer
+-   WSL Linux
+-   Mysql
+
+## Plugins
+
 -   Spatie/Laravel-activitylog v4
-
-## Languages Supported
-
-ActivityLog Plugin is translated for :
-
--   🇧🇷 Brazilian Portuguese
--   🇺🇸 English
--   🇪🇸 Spanish
--   🇫🇷 French
+-   Excel Export
+-   Livewire Componts tables
 
 ## Installation
 
-You can install the package via composer:
+Clonar o projeto do repositorio:
 
 ```bash
-composer require rmsramos/activitylog
+git clone https://github.com/isaquesene/groupGestor.git my-project
 ```
 
-After that run the install command:
+Configurar arquivo .nev dependendo se for usar Docker ou Xampp:
 
 ```bash
-php artisan activitylog:install
+# rodar com xampp
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=groupgestor
+DB_USERNAME=root
+DB_PASSWORD=
+
+# rodar com Docker
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=groupgestor
+DB_USERNAME=sail
+DB_PASSWORD=password
+
 ```
 
-This will publish the config & migrations from `spatie/laravel-activitylog`
+## Instalar o Docker
 
-And run migrates
+Link para baixar o Docker: 
+
+https://docs.docker.com/desktop/install/windows-install/
 
 ```bash
 php artisan migrate
