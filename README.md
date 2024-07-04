@@ -10,7 +10,7 @@ This package provides a Filament resource that shows you all of the activity log
 
 ## Configurações
 
--   Laravel v11
+-   Laravel Sail v11
 -   Filament v3
 -   Livewire 3
 -   Vue.js
@@ -64,10 +64,18 @@ https://docs.docker.com/desktop/install/windows-install/
 
 ## Configurar o Docker
 
-Apos a instalação do Docker será preciso instalar o WSL, um serviço linux para sunbir arquivos .sh e facilitar a configuração do ambiente.
+Apos a instalação do Docker será preciso instalar o WSL, um serviço linux para o projeto que está em Laravel Sail e facilitar a configuração do ambiente.
 Passos para configurar e subir a aplicação no ambiente Docker usando o WSL do Linux:
 
-Após instalar o Docker va em 
+Após instalar o Docker va em Resources > WSL e habilite para poder usar.
+
+![WSL2_4_012](https://github.com/isaquesene/groupGestor/assets/109972304/ac21d885-f69a-454c-982a-dbd6ac94ab72)
+
+## Comandos para Rodar o laravel Sail pelo WSL
+
+No Windows vá em iniciar e procure pelo terminal do WSL:
+
+
 
 ## Instalar o Xampp
 
