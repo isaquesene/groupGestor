@@ -28,9 +28,22 @@ This package provides a Filament resource that shows you all of the activity log
 ## Installation
 
 Clonar o projeto do repositorio:
-
 ```bash
 git clone https://github.com/isaquesene/groupGestor.git my-project
+```
+
+No diretorio do projeto instale o composer:
+```bash
+composer install
+```
+
+Se não tiver o composer instalado na sua maquina, entre no site oficial do Composer e realize a instalação.
+Link para baixar o composer: 
+https://getcomposer.org/download/ 
+
+Para certificar se o composer está instalado corretamente no seu ambiente, abra o terminal do seu sistema operacional e execute:
+```bash
+composer --version
 ```
 
 Configurar arquivo .nev dependendo se for usar Docker ou Xampp:
@@ -123,11 +136,17 @@ Executar as Migrações:
 ./vendor/bin/sail artisan migrate
 ```
 
-## Instalar o Xampp
+![imagem_2024-07-04_203533566](https://github.com/isaquesene/groupGestor/assets/109972304/83ecfad8-8cd2-4442-be76-75f7bea8990b)
+
+Depois no su navegador acesse localhost para ver a aplicação. 
+
+## Subindo aplicação com ambiente xampp
 
 Link para baixar o Xampp:
 
 https://www.apachefriends.org/pt_br/index.html
+
+Depois de instalar o xampp execute a porta e o serviço mysql: 
 
 ```bash
 php artisan migrate
