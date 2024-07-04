@@ -2,7 +2,7 @@
 
 <div class="filament-hidden">
 
-![Screenshot of Application Feature]([https://raw.githubusercontent.com/rmsramos/activitylog/main/arts/cover.jpeg](https://www.canva.com/design/DAGKBuevGq8/nEuZIAXrCVJZFPrzCwLCTQ/view?utm_content=DAGKBuevGq8&utm_campaign=designshare&utm_medium=link&utm_source=editor))
+![Screenshot of Application Feature](https://www.canva.com/design/DAGKBuevGq8/nEuZIAXrCVJZFPrzCwLCTQ/view?utm_content=DAGKBuevGq8&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 </div>
 
