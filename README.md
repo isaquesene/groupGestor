@@ -216,4 +216,10 @@ Ao realizar o cadastro será direcionado para o Painel(Dashboard) do sistema. No
 
 Para seguir o ciclo de relacionamentos do sistema cadastre um grupo no modulo de Grupo Economico:
 
+![imagem_2024-07-05_071424110](https://github.com/isaquesene/groupGestor/assets/109972304/2e6a6e4d-2fba-4558-a0e3-f2bc7910842e)
+
+# Modulo de Bandeira
+
+Neste modulo você poderá criar a bandeira e vincular ela a um grupo economico, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas:
+
 
