@@ -253,5 +253,11 @@ Neste modulo será possivel visualizar os movimentos (eventos) realizados no sis
 
 Foi implementado em todos os modulos o Export para Excel para exportar relatorios em excel para coletar dados:
 
+![imagem_2024-07-05_075924432](https://github.com/isaquesene/groupGestor/assets/109972304/c021836a-c1b9-4bb7-a850-409c41150b6f)
+
+# Sidebar personalizado
+
+No sidebar foi personalizado a função de recolher para melhorar a visualização e a experiencia do usuário:
+
 
 
