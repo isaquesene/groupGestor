@@ -228,4 +228,11 @@ Neste modulo você poderá criar a bandeira e vincular ela a um grupo economico,
 
 Neste modulo você poderá criar a Unidade e vincular ela a uma Bandeira, lembrando que para criar essa Unidade você precisa fornecer um CNPJ válido, foi usado um plugin para tratar CNPJ e CPF válidos:
 
+![imagem_2024-07-05_074052568](https://github.com/isaquesene/groupGestor/assets/109972304/3b865a14-4af2-4318-a6bc-12363442223f)
+
+# Modulo de Colaborador
+
+Neste modulo você poderá criar o Colaborador e vincular ele a uma Unidade, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas. Esse modulo é rastreado por logs que fornecerá para a Auditoria os movimentos de criar, excluir e editar. Resumindo o log irá registrar qualquer movimentação realizado no Modulo de Colaborador:
+
+
 
