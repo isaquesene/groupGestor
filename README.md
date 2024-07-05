@@ -200,4 +200,10 @@ Sistema de gestão para um grupo econômico que possui várias bandeiras, unidad
 
 Rodando a aplicação abrirá a tela de login, foi habilitado no painel do filament a função de '->registration()' assim sendo possivel realizar seu cadastro como usuário no sistema:
 
+obs: A senha precisa ter no minimo 8 caracteres.
+
+![login](https://github.com/isaquesene/groupGestor/assets/109972304/aebb4b69-994d-42bf-8d4e-218785429a54)
+
+Ao realizar o cadastro será direcionado para o Painel(Dashboard) do sistema:
+
 
