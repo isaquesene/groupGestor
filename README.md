@@ -259,5 +259,8 @@ Foi implementado em todos os modulos o Export para Excel para exportar relatorio
 
 No sidebar foi personalizado a função de recolher para melhorar a visualização e a experiencia do usuário:
 
+![sidebar](https://github.com/isaquesene/groupGestor/assets/109972304/a5cceeee-14c3-4c9f-a207-205197858240)
+
+# Tema Dark
 
 
