@@ -240,5 +240,11 @@ Neste modulo você poderá criar, editar e excluir o Colaborador e vincular ele 
 
 Neste modulo você poderá criar, editar e excluir usuários:
 
+![user](https://github.com/isaquesene/groupGestor/assets/109972304/78cf3ee3-7824-483d-90f0-d6df4ad4b814)
+
+# Modulo de Auditoria (Logs)
+
+Neste modulo será possivel visualizar os movimentos (eventos) realizados no sistema:
+
 
 
