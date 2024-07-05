@@ -220,19 +220,25 @@ Para seguir o ciclo de relacionamentos do sistema cadastre um grupo no modulo de
 
 # Modulo de Bandeira
 
-Neste modulo você poderá criar a bandeira e vincular ela a um grupo economico, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas:
+Neste modulo você poderá criar, editar e excluir a bandeira e vincular ela a um grupo economico, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas:
 
 ![Bandeira](https://github.com/isaquesene/groupGestor/assets/109972304/fcff0317-bcfe-4636-898d-2559baf65b48)
 
 # Modulo de Unidade
 
-Neste modulo você poderá criar a Unidade e vincular ela a uma Bandeira, lembrando que para criar essa Unidade você precisa fornecer um CNPJ válido, foi usado um plugin para tratar CNPJ e CPF válidos:
+Neste modulo você poderá criar, editar e excluir a Unidade e vincular ela a uma Bandeira, lembrando que para criar essa Unidade você precisa fornecer um CNPJ válido, foi usado um plugin para tratar CNPJ e CPF válidos:
 
 ![imagem_2024-07-05_074052568](https://github.com/isaquesene/groupGestor/assets/109972304/3b865a14-4af2-4318-a6bc-12363442223f)
 
 # Modulo de Colaborador
 
-Neste modulo você poderá criar o Colaborador e vincular ele a uma Unidade, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas. Esse modulo é rastreado por logs que fornecerá para a Auditoria os movimentos de criar, excluir e editar. Resumindo o log irá registrar qualquer movimentação realizado no Modulo de Colaborador:
+Neste modulo você poderá criar, editar e excluir o Colaborador e vincular ele a uma Unidade, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas. Esse modulo é rastreado por logs que fornecerá para a Auditoria os movimentos de criar, excluir e editar. Resumindo o log irá registrar qualquer movimentação realizado no Modulo de Colaborador:
+
+![colaborador](https://github.com/isaquesene/groupGestor/assets/109972304/e7d68380-4628-49ed-9393-aad07d4eca07)
+
+# Modulo de Usuários
+
+Neste modulo você poderá criar, editar e excluir usuários:
 
 
 
