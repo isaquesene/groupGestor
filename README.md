@@ -198,12 +198,18 @@ php artisan serve
 
 Sistema de gestão para um grupo econômico que possui várias bandeiras, unidades e colaboradores. Ele é composto pelos seguintes modulos: Dashboard, Colaborador, Grupo Economico, Bandeira, Unidade, Usuários e Auditorias (Logs).
 
+# Login
+
 Rodando a aplicação abrirá a tela de login, foi habilitado no painel do filament a função de '->registration()' assim sendo possivel realizar seu cadastro como usuário no sistema:
 
 obs: A senha precisa ter no minimo 8 caracteres.
 
 ![login](https://github.com/isaquesene/groupGestor/assets/109972304/aebb4b69-994d-42bf-8d4e-218785429a54)
 
-Ao realizar o cadastro será direcionado para o Painel(Dashboard) do sistema:
+# Painel (Dashboard)
+
+Ao realizar o cadastro será direcionado para o Painel(Dashboard) do sistema. No dashboard será possivel visualizar os indicadores em cards, gráficos e tabelas. 
+
+![imagem_2024-07-05_070537072](https://github.com/isaquesene/groupGestor/assets/109972304/65aebd39-8854-4efa-beb4-bab8e3a4571c)
 
 
