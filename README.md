@@ -212,4 +212,8 @@ Ao realizar o cadastro será direcionado para o Painel(Dashboard) do sistema. No
 
 ![imagem_2024-07-05_070537072](https://github.com/isaquesene/groupGestor/assets/109972304/65aebd39-8854-4efa-beb4-bab8e3a4571c)
 
+# Modulo de Grupo Economico
+
+Para seguir o ciclo de relacionamentos do sistema cadastre um grupo no modulo de Grupo Economico:
+
 
