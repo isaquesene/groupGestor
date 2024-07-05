@@ -82,14 +82,30 @@ class Unitlw extends Component implements HasTable, HasForms
                             $record->update($data);
                             $this->notify('Unidade atualizada com sucesso.');
                         }),
-                    Tables\Actions\DeleteAction::make(),
+                    Tables\Actions\DeleteAction::make()
+                        ->action(function ($record) {
+                            try {
+                                $record->delete();
+                                $this->notify('Unidade deletada com sucesso.');
+                            } catch (\Exception $e) {
+                                $this->notify('Erro ao deletar unidade: ' . $e->getMessage(), 'error');
+                            }
+                        }),
                 ])
                 ->button()
                 ->label('Ações')
             ])
             ->bulkActions([
                 ExportBulkAction::make(),
-                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\DeleteBulkAction::make()
+                    ->action(function ($records) {
+                        try {
+                            $records->each->delete();
+                            $this->notify('Unidades deletadas com sucesso.');
+                        } catch (\Exception $e) {
+                            $this->notify('Erro ao deletar unidades: ' . $e->getMessage(), 'error');
+                        }
+                    }),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make()
