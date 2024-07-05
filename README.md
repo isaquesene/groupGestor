@@ -263,4 +263,4 @@ No sidebar foi personalizado a função de recolher para melhorar a visualizaç�
 
 # Tema Dark
 
-
+![imagem_2024-07-05_080350646](https://github.com/isaquesene/groupGestor/assets/109972304/3a3c9d69-26d4-4dec-b2d1-61a36fc8c803)
