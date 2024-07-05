@@ -1,66 +1,266 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Group Gestor - Sistema de gestão para grupos econômicos
 
-## About Laravel
+<div class="filament-hidden">
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![Design sem nome (1)](https://github.com/isaquesene/groupGestor/assets/109972304/d7cea22e-0e0b-4eab-9e04-79aba2793437)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+</div>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sistema de gestão para um grupo econômico que possui várias bandeiras, unidades e colaboradores. 
 
-## Learning Laravel
+## Configurações
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Laravel Sail v11
+- Filament v3
+- Livewire 3
+- Vue.js
+- Tailwind
+- Docker Compose
+- WSL Linux
+- MySQL
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Plugins
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Spatie/Laravel-activitylog v4
+- Excel Export
+- Livewire Components tables
 
-## Laravel Sponsors
+## Instalação
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Clonar o projeto do repositório:
+```bash
+git clone https://github.com/isaquesene/groupGestor.git my-project
+```
 
-### Premium Partners
+### No diretório do projeto, instale o composer:
+```bash
+composer install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Se não tiver o composer instalado na sua máquina, entre no [site oficial do Composer](https://getcomposer.org/download/) e realize a instalação.
 
-## Contributing
+Para certificar-se de que o composer está instalado corretamente no seu ambiente, abra o terminal do seu sistema operacional e execute:
+```bash
+composer --version
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Gere uma nova chave de aplicativo:
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+### Se a sua máquina não tiver Node.js instalado, rode:
+```bash
+npm install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Execute o comando para rodar o ambiente de desenvolvimento:
+```bash
+npm run dev
+```
 
-## Security Vulnerabilities
+### Execute o comando para construir os assets:
+```bash
+npm run build
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Execute as migrações da aplicação:
+```bash
+php artisan migrate
+```
 
-## License
+### Para rodar a aplicação use:
+```bash
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Configurar arquivo .env dependendo se for usar Docker ou Xampp:
+
+Para rodar com XAMPP:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=groupgestor
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Para rodar com Docker:
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=groupgestor
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+## Instalar o Docker
+
+Link para baixar o Docker: [Docker Install](https://docs.docker.com/desktop/install/windows-install/)
+
+![docker-app-search](https://github.com/isaquesene/groupGestor/assets/109972304/c4a5dc91-9cdd-4c48-8861-d1bf4d70af06)
+
+## Configurar o Docker
+
+Após a instalação do Docker, será preciso instalar o WSL, um serviço Linux para facilitar a configuração do ambiente Laravel Sail.
+
+### Passos para configurar e subir a aplicação no ambiente Docker usando o WSL do Linux:
+
+Após instalar o Docker, vá em Resources > WSL e habilite para poder usar.
+
+![WSL2_4_012](https://github.com/isaquesene/groupGestor/assets/109972304/ac21d885-f69a-454c-982a-dbd6ac94ab72)
+
+### Comandos para Rodar o Laravel Sail pelo WSL
+
+No Windows, vá em iniciar e procure pelo terminal do WSL:
+
+![wsl_windows_04](https://github.com/isaquesene/groupGestor/assets/109972304/9685b921-66f2-4955-8ee0-2e5c053a3dd5)
+
+### Abrir o Arquivo docker-compose.yml e certificar-se das credenciais do banco:
+
+Configuração docker-compose.yml:
+```yaml
+mysql:
+  image: 'mysql/mysql-server:8.0'
+  ports:
+    - '3306:3306'
+  environment:
+    MYSQL_ROOT_PASSWORD: 'password'
+    MYSQL_ROOT_HOST: '%'
+    MYSQL_DATABASE: 'groupgestor'
+    MYSQL_USER: 'sail'
+    MYSQL_PASSWORD: 'password'
+    MYSQL_ALLOW_EMPTY_PASSWORD: 1
+```
+
+### Certifique-se de que as configurações do .env correspondem ao que foi definido no docker-compose.yml:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=groupgestor
+DB_USERNAME=root
+DB_PASSWORD=newpassword
+```
+
+No terminal do Ubuntu WSL, navegue até o diretório do seu projeto e execute:
+
+```bash
+cd /mnt/c/Users/DELL/Documents/teste\ Voch\ Tech/groupGestor
+```
+
+### Suba os contêineres:
+
+```bash
+./vendor/bin/sail up -d
+```
+
+### Executar as Migrações:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+![imagem_2024-07-04_203533566](https://github.com/isaquesene/groupGestor/assets/109972304/83ecfad8-8cd2-4442-be76-75f7bea8990b)
+
+Depois, no seu navegador, acesse localhost para ver a aplicação.
+
+## Subindo aplicação com ambiente XAMPP
+
+Link para baixar o XAMPP: [XAMPP Install](https://www.apachefriends.org/pt_br/index.html)
+
+Depois de instalar o XAMPP, execute o Apache e o serviço MySQL:
+
+![imagem_2024-07-04_204600694](https://github.com/isaquesene/groupGestor/assets/109972304/91047167-4080-45fe-b3c1-1dbe7e634487)
+
+No serviço MySQL, navegue até a opção de Admin. Ao clicar, você será levado à página do PhpMyAdmin. Assim, será possível criar um banco de dados para rodar as migrações do projeto.
+
+Após criar o banco no PhpMyAdmin, navegue até o diretório do projeto:
+```bash
+cd Documents/teste\ Voch\ Tech/groupGestor
+```
+
+### Rode as migrações:
+```bash
+php artisan migrate
+```
+
+### Para rodar a aplicação, execute:
+```bash
+php artisan serve
+```
+
+# Usabilidade do Sistema Group Gestor
+
+Sistema de gestão para um grupo econômico que possui várias bandeiras, unidades e colaboradores. Ele é composto pelos seguintes modulos: Dashboard, Colaborador, Grupo Economico, Bandeira, Unidade, Usuários e Auditorias (Logs).
+
+# Login
+
+Rodando a aplicação abrirá a tela de login, foi habilitado no painel do filament a função de '->registration()' assim sendo possivel realizar seu cadastro como usuário no sistema:
+
+obs: A senha precisa ter no minimo 8 caracteres.
+
+![login](https://github.com/isaquesene/groupGestor/assets/109972304/aebb4b69-994d-42bf-8d4e-218785429a54)
+
+# Painel (Dashboard)
+
+Ao realizar o cadastro será direcionado para o Painel(Dashboard) do sistema. No dashboard será possivel visualizar os indicadores em cards, gráficos e tabelas. 
+
+![imagem_2024-07-05_070537072](https://github.com/isaquesene/groupGestor/assets/109972304/65aebd39-8854-4efa-beb4-bab8e3a4571c)
+
+# Modulo de Grupo Economico
+
+Para seguir o ciclo de relacionamentos do sistema cadastre um grupo no modulo de Grupo Economico:
+
+![imagem_2024-07-05_071424110](https://github.com/isaquesene/groupGestor/assets/109972304/2e6a6e4d-2fba-4558-a0e3-f2bc7910842e)
+
+# Modulo de Bandeira
+
+Neste modulo você poderá criar, editar e excluir a bandeira e vincular ela a um grupo economico, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas:
+
+![Bandeira](https://github.com/isaquesene/groupGestor/assets/109972304/fcff0317-bcfe-4636-898d-2559baf65b48)
+
+# Modulo de Unidade
+
+Neste modulo você poderá criar, editar e excluir a Unidade e vincular ela a uma Bandeira, lembrando que para criar essa Unidade você precisa fornecer um CNPJ válido, foi usado um plugin para tratar CNPJ e CPF válidos:
+
+![imagem_2024-07-05_074052568](https://github.com/isaquesene/groupGestor/assets/109972304/3b865a14-4af2-4318-a6bc-12363442223f)
+
+# Modulo de Colaborador
+
+Neste modulo você poderá criar, editar e excluir o Colaborador e vincular ele a uma Unidade, foi realizado o relacionamento belongsTo e feito a tratativa no banco de Delete cascata para criar e excluir esse registro sem problemas. Esse modulo é rastreado por logs que fornecerá para a Auditoria os movimentos de criar, excluir e editar. Resumindo o log irá registrar qualquer movimentação realizado no Modulo de Colaborador:
+
+![colaborador](https://github.com/isaquesene/groupGestor/assets/109972304/e7d68380-4628-49ed-9393-aad07d4eca07)
+
+# Modulo de Usuários
+
+Neste modulo você poderá criar, editar e excluir usuários:
+
+![user](https://github.com/isaquesene/groupGestor/assets/109972304/78cf3ee3-7824-483d-90f0-d6df4ad4b814)
+
+# Modulo de Auditoria (Logs)
+
+Neste modulo será possivel visualizar os movimentos (eventos) realizados no sistema:
+
+![auditoria1](https://github.com/isaquesene/groupGestor/assets/109972304/17f24628-704e-4e4a-a000-edf3414ce476)
+![auditoria2](https://github.com/isaquesene/groupGestor/assets/109972304/9bdd66f8-ee83-4b4c-8a94-ff70385c0b5d)
+
+# Export Relatorios Excel
+
+Foi implementado em todos os modulos o Export para Excel para exportar relatorios em excel para coletar dados:
+
+![imagem_2024-07-05_075924432](https://github.com/isaquesene/groupGestor/assets/109972304/c021836a-c1b9-4bb7-a850-409c41150b6f)
+
+# Sidebar personalizado
+
+No sidebar foi personalizado a função de recolher para melhorar a visualização e a experiencia do usuário:
+
+![sidebar](https://github.com/isaquesene/groupGestor/assets/109972304/a5cceeee-14c3-4c9f-a207-205197858240)
+
+# Tema Dark
+
+![imagem_2024-07-05_080350646](https://github.com/isaquesene/groupGestor/assets/109972304/3a3c9d69-26d4-4dec-b2d1-61a36fc8c803)
