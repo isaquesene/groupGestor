@@ -70,6 +70,11 @@ npm run build
 php artisan migrate
 ```
 
+### Para rodar a aplicação use:
+```bash
+php artisan serve
+```
+
 ### Configurar arquivo .env dependendo se for usar Docker ou Xampp:
 
 Para rodar com XAMPP:
@@ -188,5 +193,9 @@ php artisan migrate
 ```bash
 php artisan serve
 ```
+
+# Usabilidade do Sistema Group Gestor
+
+Sistema de gestão para um grupo econômico que possui várias bandeiras, unidades e colaboradores. Ele é composto pelos seguintes modulos: Dashboard, Colaborador, Grupo Economico, Bandeira, Unidade, Usuários e Auditorias (Logs).
 
 
