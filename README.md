@@ -246,5 +246,12 @@ Neste modulo você poderá criar, editar e excluir usuários:
 
 Neste modulo será possivel visualizar os movimentos (eventos) realizados no sistema:
 
+![auditoria1](https://github.com/isaquesene/groupGestor/assets/109972304/17f24628-704e-4e4a-a000-edf3414ce476)
+![auditoria2](https://github.com/isaquesene/groupGestor/assets/109972304/9bdd66f8-ee83-4b4c-8a94-ff70385c0b5d)
+
+# Export Relatorios Excel
+
+Foi implementado em todos os modulos o Export para Excel para exportar relatorios em excel para coletar dados:
+
 
 
