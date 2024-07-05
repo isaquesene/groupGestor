@@ -29,68 +29,68 @@ Sistema de gestão para um grupo econômico que possui várias bandeiras, unidad
 ## Instalação
 
 ### Clonar o projeto do repositório:
-\`\`\`bash
+```bash
 git clone https://github.com/isaquesene/groupGestor.git my-project
-\`\`\`
+```
 
 ### No diretório do projeto, instale o composer:
-\`\`\`bash
+```bash
 composer install
-\`\`\`
+```
 
 Se não tiver o composer instalado na sua máquina, entre no [site oficial do Composer](https://getcomposer.org/download/) e realize a instalação.
 
 Para certificar-se de que o composer está instalado corretamente no seu ambiente, abra o terminal do seu sistema operacional e execute:
-\`\`\`bash
+```bash
 composer --version
-\`\`\`
+```
 
 ### Gere uma nova chave de aplicativo:
-\`\`\`bash
+```bash
 php artisan key:generate
-\`\`\`
+```
 
 ### Se a sua máquina não tiver Node.js instalado, rode:
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 ### Execute o comando para rodar o ambiente de desenvolvimento:
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 ### Execute o comando para construir os assets:
-\`\`\`bash
+```bash
 npm run build
-\`\`\`
+```
 
 ### Execute as migrações da aplicação:
-\`\`\`bash
+```bash
 php artisan migrate
-\`\`\`
+```
 
 ### Configurar arquivo .env dependendo se for usar Docker ou Xampp:
 
 Para rodar com XAMPP:
-\`\`\`env
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=groupgestor
 DB_USERNAME=root
 DB_PASSWORD=
-\`\`\`
+```
 
 Para rodar com Docker:
-\`\`\`env
+```env
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=groupgestor
 DB_USERNAME=sail
 DB_PASSWORD=password
-\`\`\`
+```
 
 ## Instalar o Docker
 
@@ -117,7 +117,7 @@ No Windows, vá em iniciar e procure pelo terminal do WSL:
 ### Abrir o Arquivo docker-compose.yml e certificar-se das credenciais do banco:
 
 Configuração docker-compose.yml:
-\`\`\`yaml
+```yaml
 mysql:
   image: 'mysql/mysql-server:8.0'
   ports:
@@ -129,36 +129,36 @@ mysql:
     MYSQL_USER: 'sail'
     MYSQL_PASSWORD: 'password'
     MYSQL_ALLOW_EMPTY_PASSWORD: 1
-\`\`\`
+```
 
 ### Certifique-se de que as configurações do .env correspondem ao que foi definido no docker-compose.yml:
 
-\`\`\`env
+```env
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=groupgestor
 DB_USERNAME=root
 DB_PASSWORD=newpassword
-\`\`\`
+```
 
 No terminal do Ubuntu WSL, navegue até o diretório do seu projeto e execute:
 
-\`\`\`bash
+```bash
 cd /mnt/c/Users/DELL/Documents/teste\ Voch\ Tech/groupGestor
-\`\`\`
+```
 
 ### Suba os contêineres:
 
-\`\`\`bash
+```bash
 ./vendor/bin/sail up -d
-\`\`\`
+```
 
 ### Executar as Migrações:
 
-\`\`\`bash
+```bash
 ./vendor/bin/sail artisan migrate
-\`\`\`
+```
 
 ![imagem_2024-07-04_203533566](https://github.com/isaquesene/groupGestor/assets/109972304/83ecfad8-8cd2-4442-be76-75f7bea8990b)
 
@@ -175,18 +175,18 @@ Depois de instalar o XAMPP, execute o Apache e o serviço MySQL:
 No serviço MySQL, navegue até a opção de Admin. Ao clicar, você será levado à página do PhpMyAdmin. Assim, será possível criar um banco de dados para rodar as migrações do projeto.
 
 Após criar o banco no PhpMyAdmin, navegue até o diretório do projeto:
-\`\`\`bash
+```bash
 cd Documents/teste\ Voch\ Tech/groupGestor
-\`\`\`
+```
 
 ### Rode as migrações:
-\`\`\`bash
+```bash
 php artisan migrate
-\`\`\`
+```
 
 ### Para rodar a aplicação, execute:
-\`\`\`bash
+```bash
 php artisan serve
-\`\`\`
+```
 
 
